@@ -1,0 +1,20 @@
+{
+  "name": "mongodb-on-k8s",
+  "description": "MongoDB deployment on Kubernetes using StatefulSets",
+  "version": "1.0.0",
+  "author": "Jaydeep Solanki <jaydp17@gmail.com> (https://jaydp.com)",
+  "bugs": {
+    "url": "https://github.com/jaydp17/mongodb-on-k8s/issues"
+  },
+  "homepage": "https://github.com/jaydp17/mongodb-on-k8s#readme",
+  "keywords": [],
+  "license": "MIT",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaydp17/mongodb-on-k8s.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
