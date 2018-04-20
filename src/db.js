@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/kubernetes');
+mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/kubernetes');
 
 const Person = mongoose.model('Person', { name: String });
 
