@@ -33,3 +33,5 @@ spec:
         env:
         - name: PORT
           value: {{ .Values.app.internalPort | quote }}
+        - name: MONGO_URL
+          value: "mongodb://{{ template "mongo.name" . }}:27017/kubernetes"

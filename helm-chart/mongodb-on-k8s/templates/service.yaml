@@ -25,3 +25,17 @@ spec:
     protocol: "TCP"
   selector:
     name: {{ template "web-app.name" . }}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "mongo.name" . }}
+  labels:
+    name: {{ template "mongo.name" . }}
+spec:
+  ports:
+  - port: 27017
+  clusterIP: None # Creates a headless service
+  selector:
+    name: {{ template "mongo.name" . }}
