@@ -3,7 +3,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "mongodb-on-k8s.name" -}}
+{{- define "web-app.name" -}}
 web-app
 {{- end -}}
 

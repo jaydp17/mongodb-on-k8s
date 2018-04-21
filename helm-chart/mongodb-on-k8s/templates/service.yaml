@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "mongodb-on-k8s.name" . }}
+  name: {{ template "web-app.name" . }}
   labels:
-    name: {{ template "mongodb-on-k8s.name" . }}
+    name: {{ template "web-app.name" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 {{ if .Values.aws_ssl_arn }}
@@ -24,4 +24,4 @@ spec:
     targetPort: {{ .Values.app.internalPort | int }}
     protocol: "TCP"
   selector:
-    name: {{ template "mongodb-on-k8s.name" . }}
+    name: {{ template "web-app.name" . }}

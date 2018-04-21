@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-  name: {{ template "mongodb-on-k8s.name" . }}
+  name: {{ template "web-app.name" . }}
   labels:
-    name: {{ template "mongodb-on-k8s.name" . }}
+    name: {{ template "web-app.name" . }}
     chart: {{ template "mongodb-on-k8s.chart" . }}
     release: {{ .Release.Name }}
 spec:
   replicas: {{ default 1 .Values.app.replicaCount | int }}
   selector:
     matchLabels:
-      name: {{ template "mongodb-on-k8s.name" . }}
+      name: {{ template "web-app.name" . }}
   template:
     metadata:
       labels:
-        name: {{ template "mongodb-on-k8s.name" . }}
+        name: {{ template "web-app.name" . }}
     spec:
       containers:
       - name: {{ .Chart.Name }}
