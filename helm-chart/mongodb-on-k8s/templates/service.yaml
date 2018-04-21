@@ -7,9 +7,11 @@ metadata:
     name: {{ template "mongodb-on-k8s.name" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+{{ if .Values.aws_ssl_arn }}
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: {{ .Values.aws.ssl.arn | quote }}
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: {{ .Values.aws_ssl_arn | quote }}
     service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+{{ end }}
 spec:
   type: LoadBalancer
   ports:

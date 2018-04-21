@@ -9,7 +9,4 @@ app:
   # TODO: change to actual commit
   commitHash: latest
 
-
-# aws:
-#   ssl:
-#     arn: ""
+# aws_ssl_arn: ""
