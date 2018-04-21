@@ -11,6 +11,14 @@ web-app
 mongodb
 {{- end -}}
 
+{{- define "imagePullPolicy" }}
+{{- if .Values.app.imageTag -}}
+IfNotPresent
+{{- else -}}
+Always  
+{{- end -}}
+{{- end -}}
+
 
 {{/*
 Create chart name and version as used by the chart label.

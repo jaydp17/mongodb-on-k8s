@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
       - name: {{ .Chart.Name }}
-        image: "jaydp17/block-cluster-node-app:{{ .Values.app.commitHash }}"
-        imagePullPolicy: Always
+        image: "jaydp17/block-cluster-node-app:{{ default "latest" .Values.app.imageTag }}"
+        imagePullPolicy: {{ template "imagePullPolicy" . }}
         ports:
         - containerPort: {{ .Values.app.internalPort | int }}
         livenessProbe:
