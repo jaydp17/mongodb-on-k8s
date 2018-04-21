@@ -1,4 +1,5 @@
 const restify = require('restify');
+const applyMiddlewares = require('./apply-middlewares');
 const applyRoutes = require('./apply-routes');
 
 const server = restify.createServer({
@@ -9,7 +10,7 @@ const server = restify.createServer({
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser());
 server.use(restify.plugins.bodyParser());
-
+applyMiddlewares(server);
 applyRoutes(server);
 
 server.listen(process.env.PORT || 3000, () => {

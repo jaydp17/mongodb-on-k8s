@@ -35,3 +35,7 @@ spec:
           value: {{ .Values.app.internalPort | quote }}
         - name: MONGO_URL
           value: "mongodb://{{ template "mongo.name" . }}:27017/kubernetes"
+        - name: KUBERNETES_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
