@@ -46,6 +46,12 @@ $ kubectl create ns my-custom-ns
 $ helm --debug upgrade --install --namespace my-custom-ns my-release-name ./helm-chart/mongodb-on-k8s
 ```
 
+If you have an SSL that you'd wanna put on your Loadbalancer
+
+```sh
+$ helm --debug upgrade --install --set aws_ssl_arn="<REPLACE_WITH_YOUR_CERT_ARN>" my-release-name ./helm-chart/mongodb-on-k8s
+```
+
 The default replica count is 3, you can change it if you like.<br/>
 Also every API response contains the **name of the pod that served the response in its header**.
 
