@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: {{ template "mongodb-on-k8s.name" . }}
+  labels:
+    name: {{ template "mongodb-on-k8s.name" . }}
+    chart: {{ template "mongodb-on-k8s.chart" . }}
+    release: {{ .Release.Name }}
+spec:
+  replicas: {{ default 1 .Values.app.replicaCount | int }}
+  selector:
+    matchLabels:
+      name: {{ template "mongodb-on-k8s.name" . }}
+  template:
+    metadata:
+      labels:
+        name: {{ template "mongodb-on-k8s.name" . }}
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "jaydp17/block-cluster-node-app:{{ .Values.app.commitHash }}"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: {{ .Values.app.internalPort | int }}
+        livenessProbe:
+          httpGet:
+            path: /
+            port: {{ .Values.app.internalPort | int }}
+        readinessProbe:
+          httpGet:
+            path: /
+            port: {{ .Values.app.internalPort | int }}
+        env:
+        - name: PORT
+          value: {{ .Values.app.internalPort | quote }}
